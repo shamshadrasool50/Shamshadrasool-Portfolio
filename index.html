@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shamshad Rasool — Mechanical Engineer</title>
+<meta name="description" content="Portfolio of Shamshad Rasool, Mechanical Engineer specializing in industrial maintenance, manufacturing, and production engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#0a0d10;
+    --bg-1:#12161b;
+    --bg-2:#181d24;
+    --line:#262d36;
+    --line-soft:#1c222a;
+    --text-0:#e8ebee;
+    --text-1:#aab1bb;
+    --text-2:#707881;
+    --blue:#5aa2ff;
+    --blue-dim:#2a5bab;
+    --silver:#c3cad2;
+    --amber:#e0a544;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-0);
+    color:var(--text-0);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--blue-dim);color:#fff;}
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  p{color:var(--text-1);line-height:1.7;margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  section{position:relative;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ===== Loader ===== */
+  #loader{
+    position:fixed;inset:0;background:var(--bg-0);z-index:9999;
+    display:flex;align-items:center;justify-content:center;flex-direction:column;
+    transition:opacity .6s ease, visibility .6s ease;
+  }
+  #loader.hide{opacity:0;visibility:hidden;pointer-events:none;}
+  .loader-mark{width:74px;height:74px;margin-bottom:28px;}
+  .loader-mark circle{fill:none;stroke:var(--line);stroke-width:1;}
+  .loader-mark .sweep{stroke:var(--blue);stroke-width:1.4;stroke-linecap:round;
+    stroke-dasharray:210;stroke-dashoffset:210;
+    animation:sweep 1.3s cubic-bezier(.65,0,.35,1) infinite;}
+  @keyframes sweep{
+    0%{stroke-dashoffset:210;transform:rotate(0deg);}
+    50%{stroke-dashoffset:40;}
+    100%{stroke-dashoffset:210;transform:rotate(360deg);}
+  }
+  .loader-mark{transform-origin:center;}
+  .loader-name{font-family:'Space Grotesk';font-size:15px;letter-spacing:.14em;font-weight:600;}
+  .loader-role{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;color:var(--text-2);margin-top:6px;}
+  .loader-bar{width:180px;height:1px;background:var(--line);margin-top:26px;position:relative;overflow:hidden;}
+  .loader-bar::after{content:'';position:absolute;left:0;top:0;height:100%;width:40%;background:var(--blue);
+    animation:load 1.3s ease-in-out infinite;}
+  @keyframes load{0%{left:-40%;}100%{left:100%;}}
+
+  /* ===== Nav ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:500;
+    background:rgba(10,13,16,.7);backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease;
+  }
+  header.scrolled{border-bottom-color:var(--line-soft);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .brand{font-family:'Space Grotesk';font-weight:600;font-size:15px;display:flex;align-items:center;gap:10px;}
+  .brand-mark{width:20px;height:20px;flex:none;}
+  .brand-mark circle{fill:none;stroke:var(--blue);stroke-width:5;}
+  .navlinks{display:flex;gap:2px;align-items:center;list-style:none;margin:0;padding:0;}
+  .navlinks a{
+    font-size:13px;color:var(--text-1);padding:8px 14px;position:relative;
+    transition:color .25s ease;
+  }
+  .navlinks a:hover{color:var(--text-0);}
+  .navlinks a.active{color:var(--text-0);}
+  .navlinks a.active::after{
+    content:'';position:absolute;left:14px;right:14px;bottom:2px;height:1px;background:var(--blue);
+  }
+  .nav-cta{font-size:12px;font-family:'JetBrains Mono';border:1px solid var(--line);padding:9px 16px;color:var(--text-0);
+    transition:border-color .25s ease, background .25s ease;white-space:nowrap;}
+  .nav-cta:hover{border-color:var(--blue);background:rgba(90,162,255,.08);}
+  #navToggle{display:none;background:none;border:none;color:var(--text-0);cursor:pointer;padding:8px;}
+  @media(max-width:860px){
+    .navlinks{display:none;}
+    .nav-cta{display:none;}
+    #navToggle{display:block;}
+  }
+  #mobileMenu{
+    display:none;position:fixed;top:76px;left:0;right:0;bottom:0;background:var(--bg-0);z-index:499;
+    padding:24px 20px;flex-direction:column;gap:2px;
+  }
+  #mobileMenu.open{display:flex;}
+  #mobileMenu a{padding:16px 4px;border-bottom:1px solid var(--line-soft);font-size:16px;font-family:'Space Grotesk';}
+
+  /* ===== Hero ===== */
+  #home{
+    min-height:100vh;display:flex;align-items:center;padding-top:76px;
+    position:relative;
+  }
+  .blueprint-bg{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 65% 40%, #000 40%, transparent 78%);
+            mask-image:radial-gradient(ellipse 70% 60% at 65% 40%, #000 40%, transparent 78%);
+    opacity:.5;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;
+    position:relative;z-index:1;width:100%;
+  }
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .eyebrow-line{display:flex;align-items:center;gap:12px;margin-bottom:26px;}
+  .eyebrow-line .dash{width:34px;height:1px;background:var(--blue);}
+  .eyebrow-line span{font-family:'JetBrains Mono';font-size:12px;color:var(--text-2);letter-spacing:.08em;}
+  .hero-name{font-size:clamp(40px,6.6vw,76px);line-height:1.02;color:var(--text-0);}
+  .hero-name .accent{color:var(--blue);}
+  .hero-role{font-family:'Manrope';font-weight:600;font-size:clamp(16px,2vw,20px);color:var(--silver);margin-top:16px;letter-spacing:.01em;}
+  .hero-desc{max-width:460px;margin-top:22px;font-size:15.5px;}
+  .hero-btns{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;}
+  .btn{
+    font-family:'JetBrains Mono';font-size:13px;padding:14px 26px;
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--line);color:var(--text-0);
+    transition:all .3s ease; position:relative;
+  }
+  .btn-primary{background:var(--blue);border-color:var(--blue);color:#081120;font-weight:500;}
+  .btn-primary:hover{background:#71b0ff;border-color:#71b0ff;}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue);}
+
+  .hero-photo-wrap{
+    position:relative;width:100%;max-width:420px;margin:0 auto;
+    aspect-ratio:1/1;
+  }
+  .ring{
+    position:absolute;inset:0;border-radius:50%;border:1px solid var(--line);
+  }
+  .ring.spin{animation:spin 40s linear infinite;}
+  .ring.spin-rev{animation:spin 55s linear infinite reverse;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .ring-2{inset:26px;}
+  .ring-3{inset:52px;border-style:dashed;border-color:var(--line-soft);}
+  .ring-tick{position:absolute;width:6px;height:6px;background:var(--blue);border-radius:50%;top:-3px;left:calc(50% - 3px);box-shadow:0 0 8px 1px rgba(90,162,255,.7);}
+  .photo-frame{
+    position:absolute;inset:64px;border-radius:50%;overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 0 0 8px var(--bg-0), 0 30px 60px -20px rgba(0,0,0,.7);
+  }
+  .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(.08) contrast(1.05);}
+  .corner-marks span{position:absolute;width:16px;height:16px;}
+  .corner-marks span::before,.corner-marks span::after{content:'';position:absolute;background:var(--silver);opacity:.55;}
+  .corner-marks .tl{top:0;left:0;}
+  .corner-marks .tr{top:0;right:0;}
+  .corner-marks .bl{bottom:0;left:0;}
+  .corner-marks .br{bottom:0;right:0;}
+  .corner-marks span::before{width:100%;height:1px;top:0;left:0;}
+  .corner-marks span::after{width:1px;height:100%;top:0;left:0;}
+  .corner-marks .tr::before{left:auto;right:0;} .corner-marks .tr::after{left:auto;right:0;}
+  .corner-marks .bl::before{top:auto;bottom:0;} .corner-marks .bl::after{top:auto;bottom:0;}
+  .corner-marks .br::before{top:auto;bottom:0;left:auto;right:0;} .corner-marks .br::after{top:auto;bottom:0;left:auto;right:0;}
+
+  .scroll-ind{
+    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:10px;z-index:2;
+  }
+  .scroll-ind .line{width:1px;height:34px;background:linear-gradient(var(--text-2),transparent);position:relative;overflow:hidden;}
+  .scroll-ind .line::after{content:'';position:absolute;top:-34px;left:0;width:100%;height:34px;background:linear-gradient(var(--blue),transparent);animation:scrolldown 2s ease-in-out infinite;}
+  @keyframes scrolldown{0%{top:-34px;}100%{top:34px;}}
+  .scroll-ind span{font-family:'JetBrains Mono';font-size:10px;color:var(--text-2);letter-spacing:.14em;}
+
+  /* ===== Section shared ===== */
+  .section-pad{padding:130px 0;}
+  @media(max-width:640px){.section-pad{padding:88px 0;}}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:64px;border-bottom:1px solid var(--line-soft);padding-bottom:26px;}
+  .sec-head .idx{font-family:'JetBrains Mono';font-size:12px;color:var(--blue);letter-spacing:.08em;margin-bottom:10px;display:block;}
+  .sec-head h2{font-size:clamp(28px,3.6vw,42px);}
+  .sec-head p{max-width:340px;font-size:14px;text-align:right;}
+  @media(max-width:700px){.sec-head{flex-direction:column;align-items:flex-start;}.sec-head p{text-align:left;}}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===== About ===== */
+  #about{background:var(--bg-1);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+  .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about-photo{position:relative;border:1px solid var(--line);padding:14px;}
+  .about-photo img{width:100%;object-fit:cover;object-position:top;aspect-ratio:4/5;filter:grayscale(.1) contrast(1.05);}
+  .about-photo .tag{
+    position:absolute;bottom:-1px;left:-1px;background:var(--bg-0);border:1px solid var(--line);
+    padding:8px 14px;font-family:'JetBrains Mono';font-size:11px;color:var(--text-2);
+  }
+  .about-text p{font-size:16px;margin-bottom:18px;color:var(--text-1);}
+  .about-text p strong{color:var(--text-0);font-weight:600;}
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--line-soft);}
+  .stat{padding:22px 18px 0 0;border-right:1px solid var(--line-soft);}
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:'JetBrains Mono';font-size:clamp(22px,3vw,32px);color:var(--blue);display:block;}
+  .stat .lbl{font-size:12px;color:var(--text-2);margin-top:6px;line-height:1.4;}
+  @media(max-width:640px){.stat-row{grid-template-columns:repeat(2,1fr);}.stat{border-bottom:1px solid var(--line-soft);padding-bottom:18px;}}
+
+  /* ===== Experience timeline ===== */
+  .timeline{position:relative;padding-left:44px;}
+  .timeline::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:1px;background:var(--line);}
+  .t-item{position:relative;padding-bottom:70px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-node{position:absolute;left:-44px;top:2px;width:19px;height:19px;border-radius:50%;border:1px solid var(--blue);background:var(--bg-0);
+    display:flex;align-items:center;justify-content:center;}
+  .t-node::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--blue);}
+  .t-date{font-family:'JetBrains Mono';font-size:12px;color:var(--blue);letter-spacing:.04em;margin-bottom:8px;display:inline-block;}
+  .t-card{border:1px solid var(--line);padding:32px;background:linear-gradient(160deg, var(--bg-2), var(--bg-1));position:relative;overflow:hidden;}
+  .t-card::before{
+    content:'';position:absolute;top:-40%;right:-15%;width:220px;height:220px;
+    background:repeating-linear-gradient(45deg, var(--line-soft) 0 1px, transparent 1px 14px);
+    opacity:.4;pointer-events:none;
+  }
+  .t-role{font-size:20px;margin-bottom:4px;}
+  .t-org{font-size:13.5px;color:var(--silver);font-weight:600;margin-bottom:18px;display:block;}
+  .t-card ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;position:relative;z-index:1;}
+  .t-card li{font-size:14.5px;color:var(--text-1);padding-left:18px;position:relative;line-height:1.6;}
+  .t-card li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:1px;background:var(--blue);}
+
+/* ===== Education ===== */
+
+#education{background:var(--bg-1);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+.edu-grid{display:flex;flex-direction:column;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);}
+@media(max-width:700px){.edu-grid{flex-direction:column;}}
+.edu-card{background:var(--bg-1);padding:36px;position:relative;display:flex;flex-direction:column;align-items:flex-start;}
+.edu-card .yr{font-family:'JetBrains Mono';font-size:12px;color:var(--text-2);display:block;margin-bottom:10px;}
+.edu-card h3{font-size:20px;margin:0 0 6px;}
+.edu-card .school{font-size:14px;color:var(--silver);display:block;width:100%;}
+.edu-card .grade{font-family:'JetBrains Mono';font-size:12px;color:var(--text-2);display:block;margin-top:8px;}
+  /* ===== Skills ===== */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);}
+  @media(max-width:820px){.skill-grid{grid-template-columns:1fr;}}
+  .skill-panel{background:var(--bg-0);padding:34px;transition:transform .35s ease, background .35s ease;transform-style:preserve-3d;perspective:800px;}
+  .skill-panel:hover{transform:translateY(-4px);background:var(--bg-2);}
+  .skill-icon{width:34px;height:34px;margin-bottom:22px;}
+  .skill-icon circle,.skill-icon path,.skill-icon rect{stroke:var(--blue);fill:none;stroke-width:1.3;}
+  .skill-panel h3{font-size:15px;letter-spacing:.02em;margin-bottom:20px;}
+  .skill-panel ul{margin:0;padding:0;list-style:none;display:grid;gap:11px;}
+  .skill-panel li{font-size:13.5px;color:var(--text-1);padding-left:16px;position:relative;}
+  .skill-panel li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--text-2);}
+
+  /* ===== Projects ===== */
+  #projects{background:var(--bg-1);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+  .proj{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:60px 0;border-bottom:1px solid var(--line-soft);}
+  .proj:last-child{border-bottom:none;}
+  .proj:nth-child(even){direction:rtl;}
+  .proj:nth-child(even) > *{direction:ltr;}
+  @media(max-width:860px){.proj{grid-template-columns:1fr;direction:ltr !important;gap:28px;}.proj:nth-child(even){direction:ltr;}}
+  .proj-visual{
+    aspect-ratio:4/3;border:1px solid var(--line);position:relative;overflow:hidden;
+    background:radial-gradient(circle at 30% 20%, #1a222c, var(--bg-0) 70%);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .proj-num{font-family:'JetBrains Mono';font-size:13px;color:var(--blue);letter-spacing:.06em;margin-bottom:14px;display:block;}
+  .proj-info h3{font-size:24px;margin-bottom:6px;line-height:1.2;}
+  .proj-sub{font-size:13px;color:var(--text-2);margin-bottom:18px;display:block;font-family:'JetBrains Mono';}
+  .proj-info p{font-size:15px;margin-bottom:16px;}
+  .proj-info ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;}
+  .proj-info li{font-size:13.5px;color:var(--text-1);padding-left:16px;position:relative;}
+  .proj-info li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--blue);}
+
+  /* turbine svg */
+  .turbine-svg{width:60%;}
+  .turbine-blades{transform-origin:170px 120px;animation:turbine 5s linear infinite;}
+  @keyframes turbine{to{transform:rotate(360deg);}}
+  .fire-svg .drop{animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35;}50%{opacity:1;}}
+  .solar-svg .ray{animation:rayfade 2.4s ease-in-out infinite;}
+  @keyframes rayfade{0%,100%{opacity:.25;}50%{opacity:.9;}}
+  .hyd-svg .arm{animation:hydmove 3s ease-in-out infinite;transform-origin:120px 170px;}
+  @keyframes hydmove{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-8deg);}}
+
+  /* ===== Certifications ===== */
+  .cert-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);}
+  @media(max-width:700px){.cert-list{grid-template-columns:1fr;}}
+  .cert{background:var(--bg-0);padding:30px 34px;display:flex;justify-content:space-between;align-items:center;gap:20px;transition:background .3s ease;}
+  .cert:hover{background:var(--bg-2);}
+  .cert h4{font-size:16px;margin-bottom:6px;}
+  .cert .src{font-size:13px;color:var(--text-2);}
+  .cert .yr{font-family:'JetBrains Mono';font-size:13px;color:var(--blue);}
+
+  /* ===== Philosophy ===== */
+  #philosophy{
+    padding:150px 0;text-align:center;position:relative;overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 90% at 50% 0%, rgba(90,162,255,.07), transparent 60%),
+      var(--bg-0);
+  }
+  #philosophy .gear-bg{position:absolute;top:50%;left:50%;width:640px;height:640px;transform:translate(-50%,-50%);opacity:.05;animation:spin 90s linear infinite;}
+  #philosophy blockquote{
+    font-family:'Space Grotesk';font-size:clamp(22px,3.4vw,38px);line-height:1.4;max-width:820px;margin:0 auto;
+    color:var(--text-0);font-weight:500;position:relative;z-index:1;
+  }
+  #philosophy .mark{color:var(--blue);font-size:1.3em;line-height:0;}
+
+  /* ===== Contact ===== */
+  #contact{background:var(--bg-1);border-top:1px solid var(--line-soft);padding:150px 0;}
+  .contact-inner{text-align:center;max-width:640px;margin:0 auto;}
+  .contact-inner h2{font-size:clamp(30px,5vw,52px);margin-bottom:20px;}
+  .contact-inner p{font-size:16px;margin-bottom:44px;}
+  .contact-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  /* ===== Footer ===== */
+  footer{border-top:1px solid var(--line-soft);padding:40px 0;}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-brand{font-family:'Space Grotesk';font-weight:600;}
+  .foot-role{font-size:12px;color:var(--text-2);margin-top:4px;}
+  .foot-social{display:flex;gap:16px;}
+  .foot-social a{width:34px;height:34px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:border-color .25s ease, color .25s ease;color:var(--text-1);}
+  .foot-social a:hover{border-color:var(--blue);color:var(--blue);}
+  .foot-copy{font-size:12px;color:var(--text-2);font-family:'JetBrains Mono';}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <svg class="loader-mark" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="33"></circle>
+    <circle class="sweep" cx="40" cy="40" r="33"></circle>
+  </svg>
+  <div class="loader-name">SHAMSHAD RASOOL</div>
+  <div class="loader-role mono">MECHANICAL ENGINEER</div>
+  <div class="loader-bar"></div>
+</div>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#home" class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.2" fill="var(--blue)" stroke="none"/></svg>
+      SR
+    </a>
+    <ul class="navlinks">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get In Touch</a>
+    <button id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div id="mobileMenu">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#skills" class="nav-link">Skills</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#education" class="nav-link">Education</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="home">
+    <div class="blueprint-bg"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line"><span class="dash"></span><span>MECHANICAL ENGINEER · LAHORE, PAKISTAN</span></div>
+        <h1 class="hero-name">Hello, I'm<br><span class="accent">Shamshad Rasool.</span></h1>
+        <p class="hero-role">Building reliability into the machines that keep industry running.</p>
+        <p class="hero-desc">Mechanical Engineer with industrial experience in manufacturing, maintenance, production, and quality operations — trained at UET Lahore and shaped on the plant floor.</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-photo-wrap">
+        <div class="ring ring-3"></div>
+        <div class="ring ring-1 spin"><div class="ring-tick"></div></div>
+        <div class="ring ring-2 spin-rev"></div>
+        <div class="photo-frame">
+          <img src="profile.jpg" alt="Portrait of Shamshad Rasool">
+        </div>
+        <div class="corner-marks">
+          <span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-ind"><span>SCROLL</span><div class="line"></div></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section-pad">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="idx mono">SEC. 01</span>
+          <h2>About Me</h2>
+        </div>
+        <p>A brief background on my training, industrial exposure, and where my curiosity as an engineer runs deepest.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <img src="profile.jpg" alt="Shamshad Rasool">
+          <div class="tag mono">UET LAHORE · 2022–2026</div>
+        </div>
+        <div class="about-text reveal">
+          <p>I am a <strong>Mechanical Engineering graduate</strong> from the University of Engineering and Technology (UET) Lahore, with practical experience in industrial maintenance, manufacturing, production, and quality operations.</p>
+          <p>I've gained hands-on industrial exposure through my time at <strong>Alif Industry (TURKPLAST)</strong> and <strong>Honda Atlas Cars Pakistan</strong> — working directly on plant machinery, production lines, and quality processes.</p>
+          <p>My interests sit at the intersection of <strong>industrial maintenance</strong>, manufacturing systems, production engineering, quality control, and mechanical design — anywhere a system can be made more reliable.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="num mono">B.Sc.</span><span class="lbl">Mechanical Engineering<br>Graduate</span></div>
+            <div class="stat"><span class="num mono">2 Mos</span><span class="lbl">Industrial Maintenance<br>Experience</span></div>
+            <div class="stat"><span class="num mono">2</span><span class="lbl">Manufacturing Plants<br>of Exposure</span></div>
+            <div class="stat"><span class="num mono">4+</span><span class="lbl">Engineering Projects<br>Delivered</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section-pad">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="idx mono">SEC. 02</span>
+          <h2>Experience</h2>
+        </div>
+        <p>From maintenance engineering on the plant floor to production exposure on a global assembly line.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item reveal">
+          <div class="t-node"></div>
+          <span class="t-date mono">JULY 2026 — August 2026</span>
+          <div class="t-card">
+            <h3 class="t-role">Maintenance Engineer</h3>
+            <span class="t-org">Alif Industry SMC Pvt Ltd (TURKPLAST)</span>
+            <ul>
+              <li>Machine breakdown troubleshooting and corrective maintenance.</li>
+              <li>Replacement of mechanical and pneumatic components.</li>
+              <li>Pneumatic jack replacement and maintenance.</li>
+              <li>Routine mechanical inspections and preventive maintenance.</li>
+              <li>Ensuring safe and efficient operation of plant machinery.</li>
+              <li>Processing maintenance issues and requests through ERP software.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <div class="t-node"></div>
+          <span class="t-date mono">JUNE 2025 — JULY 2025</span>
+          <div class="t-card">
+            <h3 class="t-role">Mechanical Engineering Intern</h3>
+            <span class="t-org">Honda Atlas Cars Pakistan</span>
+            <ul>
+              <li>Departmental rotation across different industrial operations.</li>
+              <li>Exposure to vehicle production and manufacturing workflows.</li>
+              <li>Understanding welding and engine assembly processes.</li>
+              <li>Exposure to quality inspection and production control.</li>
+              <li>Learning inventory handling and supply chain operations.</li>
+              <li>Exposure to after-sales operations.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- EDUCATION -->
+<section id="education" class="section-pad">
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <div>
+        <span class="idx mono">SEC. 03</span>
+        <h2>Education</h2>
+      </div>
+      <p>The academic foundation behind the engineering work.</p>
+    </div>
+
+    <div class="edu-grid reveal">
+
+      <!-- UNIVERSITY -->
+      <div class="edu-card">
+        <span class="yr mono">2022 — 2026</span>
+
+        <h3>BSc Mechanical Engineering</h3>
+
+        <span class="school">
+          University of Engineering and Technology (UET), Lahore
+        </span>
+
+        <span class="grade mono">
+          Grade: B
+        </span>
+      </div>
+
+
+      <!-- FSc -->
+      <div class="edu-card">
+        <span class="yr mono">2019 — 2021</span>
+
+        <h3>FSc Pre-Engineering</h3>
+
+        <span class="school">
+          Punjab Group of Colleges, Okara
+        </span>
+
+        <span class="grade mono">
+          Grade: A
+        </span>
+      </div>
+
+
+      <!-- MATRIC -->
+      <div class="edu-card">
+        <span class="yr mono">2019</span>
+
+        <h3>Matric Science</h3>
+
+        <span class="school">
+          A R Secondary School of Science, Depalpur
+        </span>
+
+        <span class="grade mono">
+          Grade: B
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section-pad">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="idx mono">SEC. 04</span>
+          <h2>Technical Expertise</h2>
+        </div>
+        <p>Core capability areas developed across maintenance, manufacturing, and engineering documentation.</p>
+      </div>
+      <div class="skill-grid reveal">
+        <div class="skill-panel">
+          <svg class="skill-icon" viewBox="0 0 34 34"><circle cx="17" cy="17" r="6"/><path d="M17 3v4M17 27v4M31 17h-4M7 17H3M27 8l-3 3M10 24l-3 3M27 26l-3-3M10 10 7 7"/></svg>
+          <h3>Industrial Maintenance</h3>
+          <ul>
+            <li>Breakdown Maintenance</li>
+            <li>Preventive Maintenance</li>
+            <li>Mechanical Inspection</li>
+            <li>Pneumatic Systems</li>
+            <li>Industrial Equipment Maintenance</li>
+          </ul>
+        </div>
+        <div class="skill-panel">
+          <svg class="skill-icon" viewBox="0 0 34 34"><rect x="5" y="9" width="24" height="18" rx="1"/><path d="M5 15h24M12 9v-4h10v4"/></svg>
+          <h3>Manufacturing</h3>
+          <ul>
+            <li>Production Processes</li>
+            <li>Manufacturing Operations</li>
+            <li>Quality Inspection</li>
+            <li>Production Control</li>
+          </ul>
+        </div>
+        <div class="skill-panel">
+          <svg class="skill-icon" viewBox="0 0 34 34"><path d="M6 26 14 6h6l8 20M10 20h14"/></svg>
+          <h3>Engineering Skills</h3>
+          <ul>
+            <li>Technical Documentation</li>
+            <li>Quality Risk Management</li>
+            <li>Supply Chain Understanding</li>
+            <li>Industrial Safety</li>
+            <li>Mechanical Systems</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section-pad">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="idx mono">SEC. 05</span>
+          <h2>Featured Projects</h2>
+        </div>
+        <p>Academic and applied engineering work spanning renewable energy, automation, and fluid power.</p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-visual">
+          <svg class="turbine-svg" viewBox="0 0 260 220">
+            <line x1="170" y1="120" x2="170" y2="200" stroke="var(--line)" stroke-width="4"/>
+            <g class="turbine-blades">
+              <path d="M170 120 L170 65 Q185 90 170 120Z" fill="var(--blue)" opacity=".85"/>
+              <path d="M170 120 L207 145 Q182 155 170 120Z" fill="var(--silver)" opacity=".7"/>
+              <path d="M170 120 L133 145 Q158 155 170 120Z" fill="var(--silver)" opacity=".5"/>
+            </g>
+            <circle cx="170" cy="120" r="7" fill="var(--bg-0)" stroke="var(--blue)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <span class="proj-num mono">PROJECT 01</span>
+          <h3>Hybrid Vertical-Axis Wind Turbine</h3>
+          <span class="proj-sub">Design, Analysis &amp; Fabrication</span>
+          <p>Designed and developed a hybrid vertical-axis wind turbine for multi-directional wind energy generation.</p>
+          <ul>
+            <li>Mechanical design</li>
+            <li>Blade fabrication</li>
+            <li>Aerodynamic performance analysis</li>
+            <li>Practical fabrication</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-visual fire-svg">
+          <svg class="turbine-svg" viewBox="0 0 260 220">
+            <rect x="105" y="120" width="50" height="40" rx="3" fill="none" stroke="var(--silver)" stroke-width="2"/>
+            <circle cx="118" cy="168" r="8" fill="none" stroke="var(--line)" stroke-width="3"/>
+            <circle cx="142" cy="168" r="8" fill="none" stroke="var(--line)" stroke-width="3"/>
+            <line x1="130" y1="120" x2="130" y2="95" stroke="var(--blue)" stroke-width="2"/>
+            <circle cx="130" cy="90" r="4" fill="var(--blue)"/>
+            <path class="drop" d="M182 88c8 10 8 18 0 24-8-6-8-14 0-24Z" fill="var(--amber)"/>
+            <path class="drop" d="M195 100c8 10 8 18 0 24-8-6-8-14 0-24Z" fill="var(--amber)" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <span class="proj-num mono">PROJECT 02</span>
+          <h3>Automatic Fire-Fighting Robot</h3>
+          <span class="proj-sub">Automation &amp; Control</span>
+          <p>Developed an automated robot capable of detecting and extinguishing fire, applying automation and control system principles.</p>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-visual solar-svg">
+          <svg class="turbine-svg" viewBox="0 0 260 220">
+            <circle cx="130" cy="110" r="26" fill="none" stroke="var(--amber)" stroke-width="2"/>
+            <g stroke="var(--amber)" stroke-width="2">
+              <line class="ray" x1="130" y1="60" x2="130" y2="48"/>
+              <line class="ray" x1="130" y1="160" x2="130" y2="172"/>
+              <line class="ray" x1="80" y1="110" x2="68" y2="110"/>
+              <line class="ray" x1="180" y1="110" x2="192" y2="110"/>
+              <line class="ray" x1="95" y1="75" x2="87" y2="67"/>
+              <line class="ray" x1="165" y1="145" x2="173" y2="153"/>
+            </g>
+            <rect x="90" y="150" width="80" height="30" fill="none" stroke="var(--silver)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <span class="proj-num mono">PROJECT 03</span>
+          <h3>Solar Water Heater</h3>
+          <span class="proj-sub">Renewable Energy · Thermal Systems</span>
+          <p>Designed a solar water heating system based on renewable energy principles, studying thermal efficiency and heat transfer performance.</p>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-visual hyd-svg">
+          <svg class="turbine-svg" viewBox="0 0 260 220">
+            <rect x="105" y="150" width="30" height="50" fill="none" stroke="var(--silver)" stroke-width="2"/>
+            <g class="arm">
+              <line x1="120" y1="150" x2="120" y2="90" stroke="var(--blue)" stroke-width="4"/>
+              <line x1="120" y1="90" x2="165" y2="70" stroke="var(--blue)" stroke-width="4"/>
+              <circle cx="165" cy="70" r="6" fill="none" stroke="var(--silver)" stroke-width="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="proj-info">
+          <span class="proj-num mono">PROJECT 04</span>
+          <h3>Hydraulic Manipulator</h3>
+          <span class="proj-sub">Fluid Power · Mechanical Systems</span>
+          <p>Applied hydraulic engineering principles to a practical mechanical system, demonstrating hydraulic motion and force transmission.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="section-pad">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="idx mono">SEC. 06</span>
+          <h2>Certifications</h2>
+        </div>
+        <p>Continued learning alongside industrial experience.</p>
+      </div>
+      <div class="cert-list reveal">
+        <div class="cert">
+          <div>
+            <h4>Risk Management and Industrial Safety</h4>
+            <span class="src">Coursera / Khalifa University</span>
+          </div>
+          <span class="yr mono">2026</span>
+        </div>
+        <div class="cert">
+          <div>
+            <h4>Solution Creation</h4>
+            <span class="src">Nestlé YEP Academy</span>
+          </div>
+          <span class="yr mono">2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section id="philosophy">
+    <svg class="gear-bg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="70" fill="none" stroke="var(--blue)" stroke-width="1"/><circle cx="100" cy="100" r="90" fill="none" stroke="var(--blue)" stroke-width="1"/><circle cx="100" cy="100" r="50" fill="none" stroke="var(--blue)" stroke-width="1"/></svg>
+    <div class="wrap">
+      <blockquote class="reveal">
+        <span class="mark">“</span>Engineering is not just about understanding how machines work. It is about solving real problems, improving systems, and creating better solutions.<span class="mark">”</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-inner reveal">
+      <span class="idx mono" style="display:block;margin-bottom:14px;">SEC. 07</span>
+      <h2>Let's Build Something Great</h2>
+      <p>I am always interested in engineering opportunities, industrial projects, and professional collaborations.</p>
+      <div class="contact-btns">
+        <a href="mailto:shamshadrasool67@gmail.com" class="btn btn-primary">Email Me</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+        <a href="#" class="btn btn-ghost">Download CV</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <div class="foot-brand">Shamshad Rasool</div>
+      <div class="foot-role">Mechanical Engineer</div>
+    </div>
+    <div class="foot-social">
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.5h4.53V23H.24V8.5zm7.66 0h4.34v1.98h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.02 5.42 6.94V23h-4.53v-6.92c0-1.65-.03-3.78-2.3-3.78-2.3 0-2.66 1.8-2.66 3.66V23H7.9V8.5z"/></svg>
+      </a>
+      <a href="mailto:shamshadrasool67@gmail.com" aria-label="Email">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+      </a>
+    </div>
+    <div class="foot-copy">© 2026 Shamshad Rasool. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('loader').classList.add('hide'), 700);
+  });
+
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  }));
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const setActive = () => {
+    let current = sections[0].id;
+    const offset = 110;
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - offset) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', setActive);
+  setActive();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
